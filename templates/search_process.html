@@ -1,0 +1,112 @@
+{% extends "index.html" %}
+
+ {% block header %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>이미지 검색</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.structure.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.theme.min.css') }}" />
+  <style>
+  .event_selected {
+    background-color: red;
+  }
+img { width: 220px;
+      height: 220px;
+      padding: 20px;
+      border: 5px solid red;
+      border-color: hsla(89, 43%, 51%, 0.3);
+      margin-bottom:10px;
+      margin-right:10px;
+      margin-left:10px
+}
+
+.scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;
+  float:left;
+}
+.scale:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+.img{
+overflow:hidden;
+}
+@media screen and (max-width:500px){
+                .scale{width:100%;}
+            }
+@media screen and (min-width: 500px) and (max-width:700px){
+                .scale{width:50%;}
+            }
+            @media screen and (min-width: 700px) and (max-width:950px){
+                .scale{width:33.33%;}
+            }
+            @media screen and (min-width: 950px) and (max-width:1200px){
+                .scale{width: 25%;}
+            }
+            @media screen and (min-width: 1200px) and (max-width:4200px){
+                .scale{width: 20%;}
+            }
+
+
+  </style>
+
+  <script src="{{ url_for('static',filename='jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='jquery-ui/jquery-ui.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+
+{% endblock header %}
+{%  block explain_contents %}
+<script>
+  $("#li_1").removeClass('active');
+  $("#li_2").removeClass('active');
+  $("#li_3").removeClass('active');
+  $("#li_4").removeClass('active');
+  $("#li_5").addClass('active');
+</script>
+
+<center>
+    <h3>
+        이미지 처리 과정
+    </h3>
+</center>
+
+<br />
+<br />
+<center>
+ <div class="img">
+<div class="scale"><a href="search_process_result?im={{imgdata[0]}}"><img src="static/sample/{{imgdata[0]}}" id="img_1" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[1]}}"><img src="static/sample/{{imgdata[1]}}" id="img_2" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[2]}}"><img src="static/sample/{{imgdata[2]}}" id="img_3" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[3]}}"><img src="static/sample/{{imgdata[3]}}" id="img_4" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[4]}}"><img src="static/sample/{{imgdata[4]}}" id="img_5" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[5]}}"><img src="static/sample/{{imgdata[5]}}" id="img_6" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[6]}}"><img src="static/sample/{{imgdata[6]}}" id="img_7" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[7]}}"><img src="static/sample/{{imgdata[7]}}" id="img_8" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[8]}}"><img src="static/sample/{{imgdata[8]}}" id="img_9" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[9]}}"><img src="static/sample/{{imgdata[9]}}" id="img_10" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[10]}}"><img src="static/sample/{{imgdata[10]}}" id="img_11" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[11]}}"><img src="static/sample/{{imgdata[11]}}" id="img_12" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[12]}}"><img src="static/sample/{{imgdata[12]}}" id="img_13" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[13]}}"><img src="static/sample/{{imgdata[13]}}" id="img_14" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[14]}}"><img src="static/sample/{{imgdata[14]}}" id="img_15" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[15]}}"><img src="static/sample/{{imgdata[15]}}" id="img_16" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[16]}}"><img src="static/sample/{{imgdata[16]}}" id="img_17" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[17]}}"><img src="static/sample/{{imgdata[17]}}" id="img_18" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[18]}}"><img src="static/sample/{{imgdata[18]}}" id="img_19" alt="" ></a></div>
+<div class="scale"><a href="search_process_result?im={{imgdata[19]}}"><img src="static/sample/{{imgdata[19]}}" id="img_20" alt="" ></a></div>
+</div>
+</center>
+
+<br />
+{%  endblock explain_contents %}

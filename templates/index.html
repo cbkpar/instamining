@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html  lang="utf-8">
+<head>
+  <title>5조 너도 이제 인스타</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <meta name="description" content="Slicebox - 3D Image Slider with Fallback" />
+        <meta name="keywords" content="jquery, css3, 3d, webkit, fallback, slider, css3, 3d transforms, slices, rotate, box, automatic" />
+		<meta name="author" content="Pedro Botelho for Codrops" />
+        <link rel="stylesheet" type="text/css" href="static/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/slicebox.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/custom.css" />
+		<script type="text/javascript" src="static/js/modernizr.custom.46884.js"></script>
+
+
+  {% block header %}
+  {% endblock header %}
+</head>
+
+
+<style>
+    ul.navbar-nav a { cursor: pointer; }
+</style>
+<body bgcolor="#ff00ff" text="#000000" link="blue" vlink="#00ff00" alink="rgb(0,0,255)">
+<nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+     <div class="navbar-header">
+       <a class="navbar-brand" href="http://192.168.0.106:5000">5조 너도 이제 인스타</a>
+     </div>
+     <ul class="nav navbar-nav">
+       <li id = "li_1" class="active"><a href="http://192.168.0.106:5000">Home</a></li>
+       <li id = "li_2"><a href="http://192.168.0.106:5000/search_insta">인스타검색</a></li>
+       <li id = "li_3"><a href="http://192.168.0.106:5000/search_url">이미지검색(url)</a></li>
+       <li id = "li_4"><a href="http://192.168.0.106:5000/search_upload">이미지검색(upload)</a></li>
+       <li id = "li_5"><a href="http://192.168.0.106:5000/search_process">처리과정</a></li>
+     </ul>
+  </div>
+</nav>
+
+
+
+{% block title %}
+{% endblock title%}
+
+{% block contents %}
+{% endblock contents%}
+
+{% block explain_contents %}
+
+<center>
+
+<div class="container">
+  <div class="wrapper">
+				<ul id="sb-slider" class="sb-slider">
+					<li>
+						<img src="{{ url_for('static', filename='logo.png')}}" border="0" width="450" height="550" alt="image1"/>
+						<div class="sb-description">
+							<h2><font color="black">5조 코리안팝콘</font></h2>
+						</div>
+					</li>
+					<li>
+						<img src="{{ url_for('static', filename='logo.png')}}" border="0" width="450" height="550" alt="image2"/>
+						<div class="sb-description">
+							<h2><font color="black">Since 2019</font></h2>
+						</div>
+					</li>
+				</ul>
+
+				<div id="shadow" class="shadow"></div>
+
+				<div id="nav-arrows" class="nav-arrows">
+					<a href="#" id="nn">Next</a>
+					<a href="#">Previous</a>
+				</div>
+
+			</div><!-- /wrapper -->
+</div>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="static/js/jquery.slicebox.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				var Page = (function() {
+
+					var $navArrows = $( '#nav-arrows' ).hide(),
+						$shadow = $( '#shadow' ).hide(),
+						slicebox = $( '#sb-slider' ).slicebox( {
+							onReady : function() {
+
+
+								$shadow.show();
+
+							},
+							orientation : 'r',
+							cuboidsRandom : true
+						} ),
+
+						init = function() {
+
+							initEvents();
+
+						},
+						initEvents = function() {
+
+							// add navigation events
+							$navArrows.children( ':first' ).on( 'click', function() {
+
+								slicebox.next();
+								return false;
+
+							} );
+
+							$navArrows.children( ':last' ).on( 'click', function() {
+
+								slicebox.previous();
+								return false;
+
+							} );
+
+						};
+
+						return { init : init };
+
+				})();
+
+				Page.init();
+
+			});
+			playAlert = setInterval(function() {slicebox.next();}, 3000);
+		</script>
+
+</center>
+
+<script>
+playAlert = setInterval(function() {
+nn.click();
+}, 3000);
+</script>
+
+
+    {% endblock explain_contents%}
+
+<center>Copyright 2019. 코리안팝콘. All rights reserved <br>
+  <h3>5조) 코리안팝콘 </h3></center>
+
+
+</body>
+</html> 

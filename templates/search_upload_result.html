@@ -1,0 +1,89 @@
+{% extends "index.html" %}
+
+ {% block header %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>이미지 검색</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.structure.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.theme.min.css') }}" />
+  <style>
+  .event_selected {
+    background-color: red;
+  }
+
+@media screen and (max-width:500px){
+                img{width:380px;
+                height:380px;}
+            }
+@media screen and (min-width: 500px) and (max-width:700px){
+                img{width:500px;
+                height:500px;}
+            }
+@media screen and (min-width: 700px) and (max-width:950px){
+                img{width:700px;
+                height:700px;}
+            }
+@media screen and (min-width: 950px) and (max-width:128px){
+                img{width:800px;
+                height:800px;}
+            }
+@media screen and (min-width: 128px) and (max-width:4200px){
+                img{width:640px;
+                height:640px;}
+            }
+  </style>
+
+  <script src="{{ url_for('static',filename='jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='jquery-ui/jquery-ui.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+
+{% endblock header %}
+{%  block explain_contents %}
+<script>
+  $("#li_1").removeClass('active');
+  $("#li_2").removeClass('active');
+  $("#li_3").removeClass('active');
+  $("#li_4").addClass('active');
+  $("#li_5").removeClass('active');
+</script>
+<center>
+    <h3>
+        업로드 이미지 검색
+    </h3>
+</center>
+<center>
+<form action= "/file_upload" name="myForm" id="myForm" method = "post" enctype = "multipart/form-data">
+    <table align = center border="1">
+        <tr align = "center">
+            <td align = "center" height="30" width="50">
+                JPG
+            </td>
+            <td colspan ="2">
+                <input type="file" id ="file" name="file">
+            </td>
+            <td width ="80">
+                <button type="submit" id="file_upload" title='업로드' name="file_upload">업로드</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</center>
+<br />
+<center>
+<img id="upimg" alt="">
+&nbsp;&nbsp;
+<img id ="reimg" alt="">
+</center>
+<script>
+var time    = new Date().getTime();
+var src     = 'static/upload/check.jpg?time=' + time;
+$('#upimg').attr('src', src);
+var src     = 'static/result-url.jpg?time=' + time;
+$('#reimg').attr('src', src);
+</script>
+
+<br />
+{%  endblock explain_contents %}

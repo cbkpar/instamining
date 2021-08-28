@@ -1,0 +1,102 @@
+{% extends "index.html" %}
+
+ {% block header %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>이미지 검색</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.structure.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.theme.min.css') }}" />
+  <style>
+  .event_selected {
+    background-color: red;
+  }
+
+@media screen and (max-width:500px){
+                img{width:380px;
+                height:380px;}
+            }
+@media screen and (min-width: 500px) and (max-width:700px){
+                img{width:500px;
+                height:500px;}
+            }
+@media screen and (min-width: 700px) and (max-width:1280px){
+                img{width:700px;
+                height:700px;}
+            }
+@media screen and (min-width: 1280px) and (max-width:4200px){
+                img{width:640px;
+                height:640px;}
+            }
+  </style>
+
+  <script src="{{ url_for('static',filename='jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='jquery-ui/jquery-ui.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+
+{% endblock header %}
+{%  block explain_contents %}
+<script>
+  $("#li_1").removeClass('active');
+  $("#li_2").removeClass('active');
+  $("#li_3").addClass('active');
+  $("#li_4").removeClass('active');
+  $("#li_5").removeClass('active');
+</script>
+
+<center>
+    <h3>
+        URL 이미지 검색
+    </h3>
+</center>
+<center>
+<form name="myForm" id="myForm">
+    <table align = center border="1">
+        <tr align = "center">
+            <td align = "center" height="30" width="50">
+                url
+            </td>
+            <td colspan ="2">
+                <input class="form-control mr-sm-2" type="text" id ="imgurl" name="imgurl"  size="120" >
+            </td>
+            <td width ="50">
+                <button type="button" class="btn btn-outline-success" id="urlsearch" title='찾기' name="urlsearch">검색</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</center>
+<script>
+    $( document ).ready(function() {
+	$('#urlsearch').click(function(){
+	if(imgurl.value =='' || imgurl.value == null){
+	alert('값을 입력해주세요');
+	return false;
+	}
+        $.ajax({
+     url : '{{url_for('url_search')}}',
+     type : 'POST',
+     data : $('#myForm').serialize() ,
+     success : function(res){
+     var time    = new Date().getTime();
+     var src     = 'static/result-url.jpg?time=' + time;
+     $("#img_url").attr("src",$("#imgurl").val());
+     $("#img_result").attr("src",src);
+
+     }
+      });
+
+	});
+
+});
+</script>
+<br />
+<center>
+<img id="img_url" alt="" >
+&nbsp;
+<img id="img_result" alt="">
+</center>
+<br />
+{%  endblock explain_contents %}

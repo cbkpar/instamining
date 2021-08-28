@@ -1,0 +1,90 @@
+{% extends "index.html" %}
+
+ {% block header %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>이미지 검색</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.structure.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.theme.min.css') }}" />
+  <style>
+  .event_selected {
+    background-color: red;
+  }
+  img {
+    height: 640px;
+    width: 640px;
+}
+  </style>
+
+  <script src="{{ url_for('static',filename='jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='jquery-ui/jquery-ui.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+
+{% endblock header %}
+{%  block explain_contents %}
+<script>
+  $("#li_1").removeClass('active');
+  $("#li_2").removeClass('active');
+  $("#li_3").removeClass('active');
+  $("#li_4").addClass('active');
+  $("#li_5").removeClass('active');
+</script>
+<center>
+    <h3>
+        업로드 이미지 검색
+    </h3>
+</center>
+
+<script>
+    var no = {{no}}
+    if(no==1){
+    alert('파일을 업로드 해주세요');
+    }
+
+</script>
+<center>
+<form action= "/file_upload" name="myForm" id="myForm" method = "post" enctype = "multipart/form-data">
+    <table align = center border="1">
+        <tr align = "center">
+            <td align = "center" height="30" width="50">
+                JPG
+            </td>
+            <td colspan ="2">
+                <input type="file" id ="file" name="file"  >
+            </td>
+            <td width ="80">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="file_upload" title='업로드' name="file_upload">업로드</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</center>
+<!--</form>-->
+<!--<script>-->
+<!--    $( document ).ready(function() {-->
+<!--    var form_data = new FormData($('form')[0]);-->
+<!--	$('#file_upload').click(function(){-->
+<!--        $.ajax({-->
+<!--     enctype:'multipart/form-data',-->
+<!--     url : '/file_upload',-->
+<!--     type : 'POST',-->
+<!--     data : form_data ,-->
+<!--     contentType: false,-->
+<!--     cache: false,-->
+<!--     processData: false,-->
+<!--     success : function(res){-->
+<!--     $("#img_url").attr("src",'image/upload/check.jpg');-->
+<!--     $("#img_result").attr("src",'static/result-url.jpg');-->
+
+<!--     }-->
+<!--      });-->
+
+<!--	});-->
+
+<!--});-->
+<!--</script>-->
+    <br />
+{%  endblock explain_contents %}

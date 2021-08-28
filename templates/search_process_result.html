@@ -1,0 +1,147 @@
+{% extends "index.html" %}
+
+ {% block header %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>이미지 검색</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.structure.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.theme.min.css') }}" />
+  <style>
+  .event_selected {
+    background-color: red;
+  }
+img {
+      padding: 10px;
+      border: 5px solid red;
+      border-color: hsla(89, 43%, 51%, 0.3);
+      margin-bottom:10px;
+      margin-right:10px;
+      margin-left:10px
+      }
+@media screen and (max-width:500px){
+                img{width:380px;
+                height:380px;}
+            }
+@media screen and (min-width: 500px) and (max-width:700px){
+                img{width:500px;
+                height:500px;}
+            }
+@media screen and (min-width: 700px) and (max-width:950px){
+                img{width:700px;
+                height:700px;}
+            }
+@media screen and (min-width: 950px) and (max-width:4200px){
+                img{width:800px;
+                height:800px;}
+            }
+
+
+
+
+
+
+  </style>
+
+  <script src="{{ url_for('static',filename='jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='jquery-ui/jquery-ui.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+
+{% endblock header %}
+{%  block explain_contents %}
+<br />
+<center>
+<img id="img">
+<script>
+    var temp = location.href.split("?im=");
+    src = temp[1];
+    document.getElementById("img").src = "static/sample/"+src;
+</script>
+<br /><h3>{{picname}}</h3>
+    <table align = center border = 2>
+        <tr>
+            <th>
+                <center>음식O</center>
+            </th>
+            <th>
+                <center>음식X</center>
+            </th>
+        </tr>
+        <tr align="center">
+            <td style="width:45%">
+                {{wordt1[0]}} : 불일치도 ({{wordl1[0]}})<br />
+                {{wordt1[1]}} : 불일치도 ({{wordl1[1]}})<br />
+                {{wordt1[2]}} : 불일치도 ({{wordl1[2]}})<br />
+                {{wordt1[3]}} : 불일치도 ({{wordl1[3]}})<br />
+                {{wordt1[4]}} : 불일치도 ({{wordl1[4]}})<br />
+                {{wordt1[5]}} : 불일치도 ({{wordl1[5]}})<br />
+                {{wordt1[6]}} : 불일치도 ({{wordl1[6]}})<br />
+                {{wordt1[7]}} : 불일치도 ({{wordl1[7]}})<br />
+                {{wordt1[8]}} : 불일치도 ({{wordl1[8]}})<br />
+                {{wordt1[9]}} : 불일치도 ({{wordl1[9]}})<br />
+                {{wordt1[10]}} : 불일치도 ({{wordl1[10]}})<br />
+                {{wordt1[11]}} : 불일치도 ({{wordl1[11]}})<br />
+                {{wordt1[12]}} : 불일치도 ({{wordl1[12]}})<br />
+                {{wordt1[13]}} : 불일치도 ({{wordl1[13]}})<br />
+                {{wordt1[14]}} : 불일치도 ({{wordl1[14]}})<br />
+                {{wordt1[15]}} : 불일치도 ({{wordl1[15]}})<br />
+                {{wordt1[16]}} : 불일치도 ({{wordl1[16]}})<br />
+                {{wordt1[17]}} : 불일치도 ({{wordl1[17]}})<br />
+                {{wordt1[18]}} : 불일치도 ({{wordl1[18]}})<br />
+                {{wordt1[19]}} : 불일치도 ({{wordl1[19]}})<br />
+            </td>
+            <td style="width:45%">
+                {{wordt2[0]}} : 불일치도 ({{wordl2[0]}})<br />
+                {{wordt2[1]}} : 불일치도 ({{wordl2[1]}})<br />
+                {{wordt2[2]}} : 불일치도 ({{wordl2[2]}})<br />
+                {{wordt2[3]}} : 불일치도 ({{wordl2[3]}})<br />
+                {{wordt2[4]}} : 불일치도 ({{wordl2[4]}})<br />
+                {{wordt2[5]}} : 불일치도 ({{wordl2[5]}})<br />
+                {{wordt2[6]}} : 불일치도 ({{wordl2[6]}})<br />
+                {{wordt2[7]}} : 불일치도 ({{wordl2[7]}})<br />
+                {{wordt2[8]}} : 불일치도 ({{wordl2[8]}})<br />
+                {{wordt2[9]}} : 불일치도 ({{wordl2[9]}})<br />
+                {{wordt2[10]}} : 불일치도 ({{wordl2[10]}})<br />
+                {{wordt2[11]}} : 불일치도 ({{wordl2[11]}})<br />
+                {{wordt2[12]}} : 불일치도 ({{wordl2[12]}})<br />
+                {{wordt2[13]}} : 불일치도 ({{wordl2[13]}})<br />
+                {{wordt2[14]}} : 불일치도 ({{wordl2[14]}})<br />
+                {{wordt2[15]}} : 불일치도 ({{wordl2[15]}})<br />
+                {{wordt2[16]}} : 불일치도 ({{wordl2[16]}})<br />
+                {{wordt2[17]}} : 불일치도 ({{wordl2[17]}})<br />
+                {{wordt2[18]}} : 불일치도 ({{wordl2[18]}})<br />
+                {{wordt2[19]}} : 불일치도 ({{wordl2[19]}})<br />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <center><b>
+                    알고리즘 결과 : {{print1[0]}}<br />
+                    CNN 결과 : {{print2[0]}} <br />
+
+                </b></center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <center><b>
+                    <img class="result" id ="reimg" alt="" ><br />
+                    <script>
+var time    = new Date().getTime();
+var src     = 'static/upload/check.jpg?time=' + time;
+$('#upimg').attr('src', src);
+var src     = 'static/result-url.jpg?time=' + time;
+$('#reimg').attr('src', src);
+</script>
+                    좋아요 점수 : {{print3[0]}}
+                </b></center>
+
+            </td>
+        </tr>
+    </table>
+</center>
+
+<br />
+{%  endblock explain_contents %}

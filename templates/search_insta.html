@@ -1,0 +1,78 @@
+{% extends "index.html" %}
+
+ {% block header %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>이미지 검색</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.structure.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.theme.min.css') }}" />
+  <style>
+  .event_selected {
+    background-color: red;
+  }
+  </style>
+
+  <script src="{{ url_for('static',filename='jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='jquery-ui/jquery-ui.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+
+{% endblock header %}
+{%  block explain_contents %}
+
+<script>
+  $("#li_1").removeClass('active');
+  $("#li_2").addClass('active');
+  $("#li_3").removeClass('active');
+  $("#li_4").removeClass('active');
+  $("#li_5").removeClass('active');
+</script>
+
+<center>
+    <h3>
+        인스타 검색
+    </h3>
+</center>
+<center>
+<form name="myForm" id="myForm">
+    <table align = center border="1">
+        <tr align = "center">
+            <td colspan = 2 width = 200>
+                <input type="radio" name="selection" value="hash" checked="checked">해쉬태그
+                <input type="radio" name="selection" value="name">이름
+            </td>
+        </tr>
+        <tr align = "center">
+            <td height = 30>
+                <input type="text" class="form-control mr-sm-2" id ="txt" name="txt"  size="12" >
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-success" id="searchBtn" title='찾기' name="searchBtn1">검색</button>
+                <script>
+$( document ).ready(function() {
+
+	$('#searchBtn').click(function(){
+        $.ajax({
+     url : '{{url_for('search_start')}}',
+     type : 'POST',
+     data : $('#myForm').serialize() ,
+     success : function(res){
+     var imgurl = 'static/result-'+$("#txt").val()+'.jpg';
+     $("#img_result").attr("src",imgurl );
+     }
+      });
+
+	});
+
+});
+</script>
+            </td>
+        </tr>
+    </table>
+ </form>
+<img id="img_result">
+</center>
+
+{%  endblock explain_contents %}
